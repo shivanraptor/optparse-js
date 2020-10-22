@@ -41,7 +41,7 @@
 			    });
 
 			    // Handle the --include-file switch
-			    parser.on('include-file', function(value) {
+			    parser.on('include-file', function(name, value) {
 			        options.files.push(value);
 			    });
 
