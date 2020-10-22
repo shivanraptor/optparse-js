@@ -1,9 +1,9 @@
 optparse-js
 ===========
 
-Optparse-js is a command line option parser for Javascript. It's slightly based on Ruby's implementation optparse but with some differences (different languages has different needs) such as custom parsers. 
+Optparse-js is a command line option parser for Javascript created in 2009 by Johan Dahlberg ([original Github repo](https://github.com/jfd/optparse-js)). It was slightly based on Ruby's implementation optparse but with some differences (different languages has different needs) such as custom parsers. The library is revived in 2020, and more features will be added soon.
 
-All examples in this readme is using [Node.js](http://nodejs.org/). How ever, the library works with all kinds of Javascript implementations.
+All examples in this readme is using [Node.js](http://nodejs.org/). However, the library works with all kinds of Javascript implementations.
 
 
 QUICK START
@@ -91,7 +91,7 @@ Add's a callback for a switch or an argument (defined by index). Switch hooks MU
 		// Show help section
 	});
 	
-And this example show how to hook a positional argument (an option without the leading - or --).
+**Positional Arguments**: this example show how to hook a positional argument (an option without the leading `-` or `--`).
 Note that positional argument 0 will be "node" and positional argument 1 will be the path of the
 script being run. Positional argument 2 will be the first positional argument after the script path: 
 
@@ -150,7 +150,7 @@ use the script.
 
 SUGGESTIONS
 -----------
-All comments in how to improve this library is very welcome. Feel free post  suggestions to the [Issue tracker](http://github.com/jfd/optparse-js/issues), or even better, fork the repository to implement your own features.
+All comments in how to improve this library is very welcome. Feel free post  suggestions to the [Issue tracker](http://github.com/shivanraptor/optparse-js/issues), or even better, fork the repository to implement your own features.
 
 
 LICENSE
@@ -160,4 +160,5 @@ Released under a MIT-style license.
 
 COPYRIGHT
 ---------
-Copyright (c) 2009 Johan Dahlberg
+Copyright (c) 2009 Johan Dahlberg and 2020 Raptor Kwok
+
