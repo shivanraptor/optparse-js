@@ -1,7 +1,7 @@
-optparse-js
+OptparseJS
 ===========
 
-Optparse-js is a command line option parser for Javascript created in 2009 by Johan Dahlberg ([original Github repo](https://github.com/jfd/optparse-js)). It was slightly based on Ruby's implementation optparse but with some differences (different languages has different needs) such as custom parsers. The library is revived in 2020, and more features will be added soon.
+OptparseJS is a command line option parser for Javascript created in 2009 by Johan Dahlberg ([original Github repo](https://github.com/jfd/optparse-js)). It was slightly based on Ruby's implementation optparse but with some differences (different languages has different needs) such as custom parsers. The library is revived and rebranded in 2020, and more features will be added soon.
 
 All examples in this readme is using [Node.js](http://nodejs.org/). However, the library works with all kinds of Javascript implementations.
 
@@ -150,7 +150,7 @@ use the script.
 
 SUGGESTIONS
 -----------
-All comments in how to improve this library is very welcome. Feel free post  suggestions to the [Issue tracker](http://github.com/shivanraptor/optparse-js/issues), or even better, fork the repository to implement your own features.
+All comments in how to improve this library is very welcome. Feel free post suggestions to the [Issue tracker](http://github.com/shivanraptor/optparse-js/issues), or even better, fork the repository to implement your own features.
 
 
 LICENSE
@@ -158,7 +158,18 @@ LICENSE
 Released under a MIT-style license.
 
 
+TODO
+----
+OptparseJS
+- Add more useful filters
+- Code refactoring
+- Rewrite the examples and README
+
+Hashtopolis Plugin
+- Complete the support of all Hashcat arguments and options (40% implemented)
+
+
 COPYRIGHT
 ---------
-Copyright (c) 2009 Johan Dahlberg and 2020 Raptor Kwok
+Copyright (c) 2009 Johan Dahlberg and 2020 Raptor K
 
