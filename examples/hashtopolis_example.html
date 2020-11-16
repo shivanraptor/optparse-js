@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>Hashtopolis Command Validator Example</title>
+<style>
+body {
+	font-family: Arial, sans-serif;
+	font-size: 1em;
+}
+textarea {
+	width: 100%;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1.1em;
+}
+.footnote {
+	font-size: 0.8em;
+	color: #999;
+	font-style: italic;
+}
+.valid {
+	color: #0C0;
+}
+.invalid {
+	color: #F00;
+}
+</style>
+</head>
+<body>
+<h1>Hashtopolis Command Validation</h1>
+<p><textarea id="cmdLine" rows="3">-m 400 -a 0 #HL# wordlist.dict -r rule001.rule --status-timer=1 -p : --encoding-from utf-8 --cpu-affinity=1,2,3 --brain-session=0x2ae611db --brain-session-whitelist=0x2ae611db,0x2ae611de,0x2ae611dc --spin-damp=12 -1=1234567 -2=abcdef</textarea><br />
+<span class="footnote">Hint: you can paste your attack command used in Hashtopolis to check</span></p>
+<p><button onclick="onValidate()">Validate</button></p>
+<div id="result"></div>
+<p class="footnote">You can view more debug messages in your browser's console log.</p>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/shivanraptor/optparse-js@1.0.9/lib/optparse.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/shivanraptor/optparse-js@1.0.9/lib/optparse.hashtopolis.js"></script>
+<script>
+function onValidate() {
+	// function startParse(command, isHashtopolis)
+	// 1st argument is to supply the command text
+	// 2nd argument is to indicate whether it is a Hashtopolis command (true = Hashtopolis, false = Hashcat)
+	// Response is JSON format, containing 2 properties: result & reason
+	var response = startParse($('#cmdLine').val(), true);
+	if(response.result === true) {
+		$('#result').html('<span class="valid">Valid Command detected. Command Type: ' + response.reason + '</span>');
+	} else {
+		$('#result').html('<span class="invalid">Invalid Command detected. Reason: ' + response.reason + '</span>');
+	}
+}
+
+// Initial check
+onValidate();
+</script>
+</body>
+</html>

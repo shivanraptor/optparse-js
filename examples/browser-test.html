@@ -1,75 +1,92 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-	"http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-		<title>optparse.js example</title>
-		<script type="text/javascript" charset="utf-8" src="../lib/optparse.js"></script>
-		<script>
-			// Arguments to be passed to the parser
-			var ARGS = ['-p', 'This is a message', '-i', 'test.html', '--debug'];
-			
-			// Define some options
-			var SWITCHES = [
-			    ['-i', '--include-file FILE', "Includes a file"],
-			    ['-p', '--print [MESSAGE]', "Prints a message on screen"],
-			    ['-d', '--debug', "Enables debug mode"],
-			];
-			
-			function puts(msg) {
-				var body = document.getElementById('body');
-				var pre = document.createElement('pre');
-				pre.innerHTML = msg;
-				body.appendChild(pre);
-			}
-		
-			function onLoad() {
-				puts("optparse.js");
-				
-			  	// Create a new OptionParser with defined switches
-			    var parser = new optparse.OptionParser(SWITCHES);
+<head>
+<meta charset="utf-8" />
+<title>OptparseJS example</title>
+<style>
+body {
+	font-family: Arial, sans-serif;
+	font-size: 1em;
+}
+textarea {
+	width: 100%;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1.1em;
+}
+.footnote {
+	font-size: 0.8em;
+	color: #999;
+	font-style: italic;
+}
+.valid {
+	color: #0C0;
+}
+.invalid {
+	color: #F00;
+}
+</style>
+</head>
+<body>
+<h1>OptparseJS Example</h1>
+<p class="footnote">View browser console for more information</p>
+<pre id="result"></pre>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/shivanraptor/optparse-js@1.0.9/lib/optparse.js"></script>
+<script>
+// Arguments to be passed to the parser
+var ARGS = ['-p', 'This is a message', '-i', 'test.html', '--debug'];
 
-			    // Internal variable to store options.
-			    var options = {
-			        debug: false,
-			        files: []
-			    };
+// Define some options
+var SWITCHES = [
+	['-i', '--include-file FILE', "Includes a file"],
+	['-p', '--print [MESSAGE]', "Prints a message on screen"],
+	['-d', '--debug', "Enables debug mode"],
+];
 
-			    // Handle the first argument (switches excluded)
-			    parser.on(0, function(value) {
-			        puts("First non-switch argument is: " + value);
-			    });
+var output = [];
 
-			    // Handle the --include-file switch
-			    parser.on('include-file', function(name, value) {
-			        options.files.push(value);
-			    });
+// Create a new OptionParser with defined switches
+var parser = new optparse.OptionParser(SWITCHES);
 
-			    // Handle the --print switch
-			    parser.on('print', function(value) {
-			        puts('PRINT: ' + value);
-			    });
+// Internal variable to store options.
+var options = {
+	debug: false,
+	files: []
+};
 
-			    // Handle the --debug switch
-			    parser.on('debug', function() {
-			        options.debug = true;
-			    });
+// Handle the first argument (switches excluded)
+parser.on(0, function(value) {
+	output.push('First non-switch argument is: ' + value);
+});
 
-			    // Parse command line arguments
-			    parser.parse(ARGS);
+// Handle the --include-file switch
+parser.on('include-file', function(name, value) {
+	options.files.push(value);
+});
 
-			    // Output all files that was included.
-			    puts("No of files to include: " + options.files.length);
-			    for(var i = 0; i < options.files.length; i++) {
-			        puts("File [" + (i + 1) + "]:" + options.files[i]);
-			    }
+// Handle the --print switch
+parser.on('print', function(value) {
+	output.push('PRINT: ' + value);
+});
 
-			    // Is debug-mode enabled?
-			    puts("Debug mode is set to: " + options.debug);	
-			}
-		</script>
-	</head>
-	<body id="body" onload="onLoad()">
-		
-	</body>
+// Handle the --debug switch
+parser.on('debug', function() {
+	options.debug = true;
+});
+
+// Parse command line arguments
+parser.parse(ARGS);
+
+// Output all files that was included.
+output.push('No of files to include: ' + options.files.length);
+for(var i = 0; i < options.files.length; i++) {
+	output.push('File [' + (i + 1) + ']: ' + options.files[i]);
+}
+
+// Is debug-mode enabled?
+output.push('Debug mode is set to: ' + options.debug);
+
+$('#result').html(output.join('<br />'));
+</script>
+</body>
 </html>
