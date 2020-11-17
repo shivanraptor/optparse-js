@@ -48,6 +48,10 @@ Filters is a neat feature that let you filter option arguments. The OptionParser
 - NUMBER, supports both decimal and hexadecimal numbers.
 - DATE, filters arguments that matches YYYY-MM-DD. 
 - EMAIL, filters arguments that matches my@email.com.
+- SINGLE_CHAR, filters arguments that matches a single character only.
+- CSV_INT, filter arguments that matches a list of comma-separated integers.
+- CSV_HEX, filter arguments that matches a list of comma-separated hex values.
+- PERCENT, filter arguments that matches a value from 0 to 100.
  
 It's simple to use any of the filter above in your rule-set. Here is a quick example how to filter number: 
 
@@ -58,8 +62,10 @@ It's simple to use any of the filter above in your rule-set. Here is a quick exa
 
 You can add your own set of filter by calling the *parser_instance.filter* method:
 
-	parser.filter('single_char', function(value) {
-		if(value.length != 1) throw "Filter mismatch.";
+	parser.filter('double_char', function(value) {
+		if(value.length != 2) {
+			throw 'Filter mismatch.';
+		}
 		return value;
 	});
 
@@ -91,18 +97,19 @@ script being run. Positional argument 2 will be the first positional argument af
 		console.log('The first non-switch option is:' +  opt);
 	});
 	
-It's also possible to define a default handler. The default handler is called when no rule's are meet. Here is an example how to add a ´default handler´:
+**Handle Unrecognized Switch**: It's also possible to define a default handler. The default handler is called when no rule's are meet. Here is an example how to add a ´default handler´:
 
 	parser.on(function(opt) {
 		console.log('No handler was defined for option:' +  opt);
 	});
 	
-Use the wildcard handler to build a custom `on` handler.
+**Wildcard Handler**:Use the wildcard handler to build a custom `on` handler.
 
 	parser.on('*', function(opt, value) {
 		console.log('option=' + opt + ', value=' + value);
 	});
-	
+
+
 ### function filter(name, callback)
 Adds a new filter extension to the OptionParser instance. The first argument is the name of the filter (trigger). The second argument is the actual filter  See the ´OPTION FILTERS´ section for more info. 
 
@@ -136,13 +143,12 @@ Returns a string representation of this OptionParser instance (a formatted help 
 
 MORE EXAMPLES
 -------------
-See examples/hashcat_example.js and examples/browser-test.html for more info how to
-use the script. 
+See examples/hashcat_example.js and examples/browser-test.html for more info how to use the script. 
 
 
 SUGGESTIONS
 -----------
-All comments in how to improve this library is very welcome. Feel free post suggestions to the [Issue tracker](http://github.com/shivanraptor/optparse-js/issues), or even better, fork the repository to implement your own features.
+All comments in how to improve this library is very welcome. Feel free post suggestions/feature requests to the [Issue tracker](http://github.com/shivanraptor/optparse-js/issues), or even better, fork the repository to implement your own features.
 
 
 LICENSE
@@ -165,3 +171,10 @@ COPYRIGHT
 ---------
 Copyright (c) 2009 Johan Dahlberg and 2020 Raptor K
 
+
+SUPPORT US
+----------
+You can donate via [PayPal](https://paypal.me/YourAppApp).
+
+BTC: 1D1fxiG6B7GL4Cr14MpR7N7uJBemXo7nKK
+ETH: 0x5B3318109932c8EDc6297197895afDD68567672D
