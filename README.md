@@ -3,20 +3,12 @@ OptparseJS
 
 OptparseJS is a command line option parser for Javascript created in 2009 by Johan Dahlberg ([original Github repo](https://github.com/jfd/optparse-js)). It was slightly based on Ruby's implementation optparse but with some differences (different languages has different needs) such as custom parsers. The library is revived and rebranded in 2020, and more features will be added soon.
 
-All examples in this readme is using [Node.js](http://nodejs.org/). However, the library works with all kinds of Javascript implementations.
-
 
 QUICK START
 -----------
 
 The library defines one class, the OptionParser class. The class constructor takes one single argument, a list with a set of rules. Here is a quick example:
 
-	// Import the sys library
-	var sys = require('sys');
-
-	// Import the optparse library.
-	var optparse = require('optparse');
-	
 	// Define an option called `help`. We give it a quick alias named `-h` 	
 	// and a quick help text.
 	var switches = [
@@ -144,7 +136,7 @@ Returns a string representation of this OptionParser instance (a formatted help 
 
 MORE EXAMPLES
 -------------
-See examples/nodejs-test.js and examples/browser-test-html for more info how to
+See examples/hashcat_example.js and examples/browser-test.html for more info how to
 use the script. 
 
 
@@ -166,7 +158,7 @@ OptparseJS
 - Rewrite the examples and README
 
 Hashtopolis Plugin
-- Complete the support of all Hashcat arguments and options (40% implemented)
+- Complete the support of all Hashcat arguments and options (70% implemented)
 
 
 COPYRIGHT
