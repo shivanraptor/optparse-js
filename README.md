@@ -1,6 +1,9 @@
 OptparseJS
 ===========
 
+[![CodeFactor](https://www.codefactor.io/repository/github/shivanraptor/optparse-js/badge/master)](https://www.codefactor.io/repository/github/shivanraptor/optparse-js/overview/master)
+[![LoC](https://tokei.rs/b1/github/shivanraptor/optparse-js?category=code)](https://tokei.rs/b1/github/shivanraptor/optparse-js?category=code)
+
 OptparseJS is a command line option parser for Javascript created in 2009 by Johan Dahlberg ([original Github repo](https://github.com/jfd/optparse-js)). It was slightly based on Ruby's implementation optparse but with some differences (different languages has different needs) such as custom parsers. The library is revived and rebranded in 2020, and more features will be added soon.
 
 
